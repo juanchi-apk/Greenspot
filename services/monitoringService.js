@@ -3,6 +3,7 @@ import { Colors } from '../styles/brandPallete';
 
 const {primary, secondary,terciary, darkLight, brand , green, red} = Colors
 
+//LAS STRAINS YA ESTAN PASADAS AL BACKEND.
 export  const strains =[
         {
          id:1,
@@ -10,7 +11,9 @@ export  const strains =[
          genetic: "Lemon Skunk + Super Silver Haze",
          satividad: "80%", //is also a string
          thc: "19",//on Api must be expressed as a string
-         type : "feminized" ,//Auto, Fem, Reg, NN (This should be an automatic choise)
+            //Esto lo tengo que agregar a lo ultimo.
+         type : "feminized" ,//Auto, Fem, Reg, Custom, Breed(Male) (This should be an automatic choise)
+         
          minProdInt: 450 ,//on api must be expressed as integer ( Gr/m2)
          maxProdInt: 700 ,
          minProdExt: 1000 ,
@@ -67,6 +70,26 @@ export  const strains =[
     ]
 
 
+/*IMPORTANTE:
+No está todo terminado, pero estan precargados por lo menos los dos tipos principales de luz, y los de tipo
+de suelo, se cargan automaticamente al backend cuando se inicia la base de datos.
+Lo idea es que eso sea lo que pase con algunos modelos definidos, y que se puedan agregar suelos custom, cada usuario puede agregar ingredientes, cantidades, y asi otros usuarios pueden ver qué hizo.
+
+
+
+Para terminar de migrar FALTA:
+
+-Imagenes, por ahora, supongo que las voy a seleccionar desde el formulario y las voy a pasar al backend, las voy a enviar como blob , y las voy a guardar en la app usando morgan .  No las voy a mandar a nube en primera instancia, total en tal caso es mas facil hacer un middleware o modificar después.
+
+-el id de la genetica viene desde el front cuando inicia la aplicacion, traerme todos esos datos:
+Strains,
+Soils, 
+Lights
+
+-Por el momento voy a hacer lo  mismo con periodo, pero en realidad no tengo decidido como hacerlo, porque entiendo que lo idea seria que se guarde un campo para cuando haya una modificacion del periodo, asi quedan bien definidos los tiempos. Y tecnicamente, excepto las automaticas, todas arrancarian en vegetativo. Evaluar y modificar despues. 
+
+CON ESO ESTARIA LISTO PARA PROBAR LA CARGA DEL PRIMER CROP. MIENTRAS ESTA EN DESARROLLO,  NO BORRAR COMENTAR Y EN TAL CASO MANDAR ABAJO DE TODO LAS VERSIONES CON LOS DATOS HARDCODEADOS EN EL FRONT , ES MAS FACIL QUE CLONAR UN COMMIT VIEJO Y MAS RAPIDO PARA CHEQUEAR ALGUNA FALLA.  
+*/
 export const crops = [
         {
             crop_id : 1,
@@ -78,6 +101,7 @@ export const crops = [
             initialPotCapacity: 1,
             currentPotCapacity:15,
             period: "Vegetativo"
+
         },
         {
             crop_id : 2,

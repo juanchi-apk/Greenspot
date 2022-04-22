@@ -9,7 +9,6 @@ export function Shop ({navigation}) {
     return (
       <Product {...product} 
       onPress={() => {
-        console.log(product.id)
         navigation.navigate('ProductDetails', {
           productId: product.id
         });

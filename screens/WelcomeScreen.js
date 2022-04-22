@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { CartProvider } from '../context/CartContext';
+import { CropOptionProvider } from '../context/CropOptionsContext';
 import {Cart} from '../components/Cart';
 import { CartIcon } from '../components/CartIcon';
 import {ProductDetail} from './ProductDetail'
@@ -14,6 +15,7 @@ const HomeStack = createStackNavigator();
 
 export default function WelcomeScreen() {
   return (
+    <CropOptionProvider>
     <CartProvider>  
       <NavigationContainer  independent={true}>
       <HomeStack.Navigator
@@ -52,6 +54,7 @@ export default function WelcomeScreen() {
       </HomeStack.Navigator>
       </NavigationContainer>
   </CartProvider>
+  </CropOptionProvider>
   );
 }
 

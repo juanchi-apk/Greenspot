@@ -6,7 +6,7 @@ import axios from 'axios'
 export async function userSignUp (formData) {
     try{
 
-        const response = await axios.post(`http://192.168.1.43:3001/auth/signup` , formData)
+        const response = await axios.post(`http://192.168.0.95:3001/auth/signup` , formData)
          return response.data
 
     }
@@ -17,7 +17,7 @@ export async function userSignUp (formData) {
 export async function userLogin (formData) {
 
     try {
-       const response = await axios.post(`http://192.168.1.43:3001/auth/signin` , formData)
+       const response = await axios.post(`http://192.168.0.95:3001/auth/signin` , formData)
        return response.data
 
     } catch (error) {
@@ -27,25 +27,20 @@ export async function userLogin (formData) {
 }
 
 export async function signWithGoogle(data){
-    console.log(data)
-    const  {email, given_name , family_name , googleId} = data
-    let fullname = given_name + " " + family_name
+    const  {email, name , id} = data
+    
     const formData = {
-        fullName: fullname,
+        fullName: name,
         email:email, 
-        password:googleId
+        password:id
     }
     try {
-        const response = await axios.post(`http://192.168.1.43:3001/auth/signwith` , formData)
-        console.log(response.data)
-    } catch (error) {
-        console.log(error.response.data.isUser)
-        if (    !error.response.data.isUser){
-            console.log( error.response)
+       
 
-        } else{
-            console.log("El usuario ya existe")
-        }
+        const response = await axios.post(`http://192.168.0.95:3001/auth/signwith` , formData)
+        
+    } catch (error) {
+            return
     }
     
 }

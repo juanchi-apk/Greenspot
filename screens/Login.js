@@ -55,18 +55,24 @@ export default function Login({navigation}){
         
     }}, [response])
 
-     async  function getUserData( credentials, singWithGoogle){
+    function setAllData(data){
+        if(data!==undefined){
+        signWithGoogle(data);
+        setUserData(data) ;
+        }
+    }
+    async  function getUserData( credentials){
     let googleResponse  = await fetch('https://www.googleapis.com/userinfo/v2/me',{
             headers:{
             Authorization: `Bearer ${credentials}`
         }
     });
 
-    
    googleResponse.json().then(data=>{
-    signWithGoogle(data);
-    setUserData(data) ;       
-    
+   // console.log(data)
+   // signWithGoogle(data);
+   // setUserData(data) ;       
+    setAllData(data)    
 })
 navigation.navigate('WelcomeScreen')
     }
@@ -82,7 +88,7 @@ navigation.navigate('WelcomeScreen')
                 setSubmitting(false)
 
             }else{
-                console.log(data)
+                //console.log(data)
                 setSubmitting(false)
                 navigation.navigate("WelcomeScreen")
             }

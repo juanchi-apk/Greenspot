@@ -70,7 +70,7 @@ export default function SignUp({navigation}){
                 setSubmitting(false)
 
             }else{
-                console.log(data)
+               // console.log(data)
                 setSubmitting(false)
                 navigation.navigate("WelcomeScreen")
             }

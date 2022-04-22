@@ -17,7 +17,7 @@ export function ProductDetail({route}) {
 
   useEffect(() => {
     const fetchedProduct = getProduct(route.params.productId)
-    console.log(route.params.productId)
+    //console.log(route.params.productId)
     setProduct(fetchedProduct)
   });
 
